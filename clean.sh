@@ -1,1 +1,1 @@
-rm -rf *.txt spark-warehouse/ content-memory.txt session.yml encrypted-files/* nohup.out 
+rm -rf *.txt spark-warehouse/ session.yml encrypted-files/* nohup.out 
