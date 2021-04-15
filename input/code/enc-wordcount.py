@@ -43,8 +43,12 @@ if __name__ == "__main__":
                   .reduceByKey(add)
     output = counts.collect()
 
-    # Generate delay to perform mememory attack
-    time.sleep(30)
+    # Generate delay to allow window for memory attack
+    print("###########################################")
+    print("################ SLEEP 10 #################")
+    print("###########################################")
+
+    time.sleep(10)
     for (word, count) in output:
         print("%s: %i" % (word, count))
 

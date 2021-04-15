@@ -18,14 +18,14 @@ echo "" > log-memory.txt
 pid=`ps|grep python|awk -F " " '{print $1}'`
 
 # Dump the  memory of the python process
-/usr/bin/python dump-memory.py $pid  &> content-memory
+/usr/bin/python dump-memory.py $pid  &> content-memory.txt
 
 # Extract secret in the memory
-result=`cat content-memory | grep "Karate" | awk -F "." '{print $1}'`
+result=`cat content-memory.txt | grep "Karate" | awk -F "." '{print $1}'`
 
 # Add result to a log file
 if [ -z "$result" ]; then 
-    tail -n 10 content-memory &> log-memory.txt;
+    tail -n 10 content-memory.txt &> log-memory.txt;
     cat log-memory.txt; 
 else
     echo $result >> log-memory.txt;

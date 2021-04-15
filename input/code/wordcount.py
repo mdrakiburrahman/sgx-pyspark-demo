@@ -18,6 +18,13 @@ if __name__ == "__main__":
                   .map(lambda x: (x, 1)) \
                   .reduceByKey(add)
     output = counts.collect()
+    
+    # Generate delay to allow window for memory attack
+    print("###########################################")
+    print("################ SLEEP 10 #################")
+    print("###########################################")
+
+    time.sleep(10)
     for (word, count) in output:
         print("%s: %i" % (word, count))
 
