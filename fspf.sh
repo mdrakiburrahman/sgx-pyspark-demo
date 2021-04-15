@@ -17,10 +17,10 @@ rm -rf encrypted-files/*
 scone fspf create encrypted-files/volume.fspf
 scone fspf addr encrypted-files/volume.fspf / --not-protected --kernel /
 scone fspf addr encrypted-files/volume.fspf /fspf/encrypted-files/ --encrypted --kernel /fspf/encrypted-files/
-scone fspf addf encrypted-files/volume.fspf /fspf/encrypted-files/ /fspf/input/ /fspf/encrypted-files/ 
-scone fspf encrypt encrypted-files/volume.fspf > input/keytag
+scone fspf addf encrypted-files/volume.fspf /fspf/encrypted-files/ /fspf/input/code /fspf/encrypted-files/ 
+scone fspf encrypt encrypted-files/volume.fspf > keytag.txt
 
 # This meta-data will be obtained from the CAS component (see the paper)
-export SCONE_FSPF_KEY=$(cat input/keytag | awk '{print $11}')
-export SCONE_FSPF_TAG=$(cat input/keytag | awk '{print $9}')
+export SCONE_FSPF_KEY=$(cat keytag.txt | awk '{print $11}')
+export SCONE_FSPF_TAG=$(cat keytag.txt | awk '{print $9}')
 export SCONE_FSPF=/fspf/encrypted-files/volume.fspf
